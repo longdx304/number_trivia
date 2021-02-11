@@ -28,4 +28,14 @@ void main() {
       networkInfo: mockNetworkInfo,
     );
   });
+
+  group('getConcreteNumberTrivia', () {
+    final tNumber = 1;
+
+    test('should check if the device is online', () {
+      when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+      repository.getConcreteNumberTrivia(tNumber);
+      verify(mockNetworkInfo.isConnected);
+    });
+  });
 }
